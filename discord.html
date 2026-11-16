@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discord Chat Screenshot Maker</title>
+<meta name="description" content="Make a fictional Discord chat screenshot in your browser. Free, no account, nothing uploaded.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%235865f2'/%3E%3Ccircle cx='11' cy='16' r='2.4' fill='white'/%3E%3Ccircle cx='16' cy='16' r='2.4' fill='white'/%3E%3Ccircle cx='21' cy='16' r='2.4' fill='white'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="editor.css">
+<link rel="stylesheet" href="discord.css">
+</head>
+<body>
+<header class="toolbar">
+  <a class="brand" href="index.html">Chat Screenshot Maker</a>
+  <span class="tool-name">Discord</span>
+  <span class="seg-label">Layout</span>
+  <span class="seg">
+    <button type="button" data-set="layout" data-value="server">Server</button>
+    <button type="button" data-set="layout" data-value="dm">DM</button>
+  </span>
+  <span class="seg-label">View</span>
+  <span class="seg">
+    <button type="button" data-set="view" data-value="desktop">Desktop</button>
+    <button type="button" data-set="view" data-value="mobile">Mobile</button>
+  </span>
+  <span class="seg-label">Theme</span>
+  <span class="seg">
+    <button type="button" data-set="theme" data-value="dark">Dark</button>
+    <button type="button" data-set="theme" data-value="light">Light</button>
+  </span>
+  <span class="spacer"></span>
+  <span id="saveStatus"></span>
+  <label class="tool-select">Format
+    <select id="formatSel">
+      <option value="png">PNG</option>
+      <option value="jpg">JPG</option>
+      <option value="webp">WebP</option>
+    </select>
+  </label>
+  <label class="tool-select">Scale
+    <select id="scaleSel">
+      <option value="1">1x</option>
+      <option value="2" selected>2x</option>
+      <option value="3">3x</option>
+    </select>
+  </label>
+  <button type="button" class="export-btn" id="exportBtn">Download image</button>
+  <span id="exportStatus"></span>
+</header>
+
+<main class="layout">
+  <section class="panel">
+    <div class="tabs">
+      <button type="button" class="tab active" data-tab="people">People</button>
+      <button type="button" class="tab" data-tab="messages">Messages</button>
+      <button type="button" class="tab" data-tab="settings">Settings</button>
+    </div>
+    <div id="tab-people" class="tabbody">
+      <div id="peopleList"></div>
+      <button type="button" class="add-btn" id="addPerson">Add person</button>
+    </div>
+    <div id="tab-messages" class="tabbody hidden">
+      <div id="messageList"></div>
+      <button type="button" class="add-btn" id="addMessage">Add message</button>
+    </div>
+    <div id="tab-settings" class="tabbody hidden">
+      <label class="field">Server name
+        <input type="text" id="serverName" maxlength="40">
+      </label>
+      <label class="field">Channel name
+        <input type="text" id="channelName" maxlength="40">
+      </label>
+      <label class="field">Channel topic
+        <input type="text" id="channelTopic" maxlength="80">
+      </label>
+      <label class="field">Direct message with
+        <select id="dmPartner" data-person-names></select>
+      </label>
+      <p class="note">Your work saves automatically in this browser. Nothing is uploaded.</p>
+      <button type="button" class="add-btn danger" id="resetBtn">Start over</button>
+    </div>
+  </section>
+
+  <section class="stage">
+    <div id="previewRoot"></div>
+    <p class="responsible">Fiction and mockups only. Do not impersonate real people or present a fake chat as evidence. Screenshots are made in your browser and never uploaded.</p>
+  </section>
+</main>
+
+<footer class="page-foot">This tool is not affiliated with or endorsed by Discord. Discord is a trademark of Discord Inc.</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1/dist/html-to-image.js"></script>
+<script src="discord.js"></script>
+</body>
+</html>
